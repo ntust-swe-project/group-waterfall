@@ -22,7 +22,7 @@
 | `FR-CORE-12` | Settlement.dayReached、GameClock.failReason | [`class-station-crisis`](class-station-crisis.md) |
 | `FR-CORE-13` | Settlement 的 4 項指標 | [`class-station-crisis`](class-station-crisis.md) |
 | `FR-CORE-14` | Settlement.computeScore()、daysSurvived | [`class-station-crisis`](class-station-crisis.md) |
-| `FR-CORE-15` | 使用者介面（張晏碩 UI-07）→ GameClock 重新開局 | （實作） |
+| `FR-CORE-15` | use case「從結算畫面開始新局」（`UC_RESTART`）；GameClock 重新開始 | [`usecase`](usecase.md)、[`class-station-crisis`](class-station-crisis.md) |
 | `FR-STN-01` | Station（單一地圖）、Facility.position | [`class-station-crisis`](class-station-crisis.md) |
 | `FR-STN-02` | Station.requestBuild() → TaskDispatcher（IF-03） | [`class-station-crisis`](class-station-crisis.md) |
 | `FR-STN-03` | FacilitySpec.buildCost、SupplyStock.available() | [`class-station-crisis`](class-station-crisis.md) |
@@ -84,16 +84,22 @@
 | `FR-CTL-01`～`04`、`FR-CTL-14` | TaskDispatcher.submitPlayerTask()、instructionDelaySeconds；TaskStatus.PENDING_DELAY；循序圖的 par 區塊（延遲與移動期間仍可操作） | [`class-colonist-control`](class-colonist-control.md)、[`seq-command`](seq-command.md) |
 | `FR-CTL-05`～`07`、`FR-CTL-13` | TaskDispatcher.interruptAndSaveProgress()、resumeTask()；Task.progress、creationOrder | [`class-colonist-control`](class-colonist-control.md)、[`seq-command`](seq-command.md)、[`state-colonist`](state-colonist.md) |
 | `FR-CTL-08`～`12` | TaskDispatcher.dispatch()、cancelTask()；TaskKind；Task → Facility；Task.markWaiting() | [`class-colonist-control`](class-colonist-control.md)、[`seq-command`](seq-command.md)、[`usecase`](usecase.md) |
-| `UI-01`～`11` | use case 圖的「資訊查看與狀態提醒」「工作與設施管理」「遊戲流程」三組使用案例；`UI-06`、`UI-10` 另見指令循序圖 | [`usecase`](usecase.md)、[`seq-command`](seq-command.md) |
+| `UI-01`、`UI-03` | use case「查看天數及太空站完整度」（主畫面常駐顯示） | [`usecase`](usecase.md) |
+| `UI-02`、`UI-04` | use case「查看殖民者個體資訊」 | [`usecase`](usecase.md) |
+| `UI-05` | use case 設計說明第 5 點：個體面板不顯示目前工作與工作優先度，優先度在工作指派介面設定 | [`usecase`](usecase.md) |
+| `UI-06` | use case「下達建造／維修／操作設施工作指令」；指令循序圖第 1 步（選目標與優先度，預設 3） | [`usecase`](usecase.md)、[`seq-command`](seq-command.md) |
+| `UI-07` | use case「查看勝敗結算、指標與總分」 | [`usecase`](usecase.md) |
+| `UI-08` | use case「查看物資總量、預留量與可用量」 | [`usecase`](usecase.md) |
+| `UI-09`、`UI-11` | use case「查看殖民者及當前危機提醒」 | [`usecase`](usecase.md) |
+| `UI-10` | use case「查看一般工作等待原因」；指令循序圖的 WAITING 分支 | [`usecase`](usecase.md)、[`seq-command`](seq-command.md) |
 | `IF-01`、`IF-02` | TaskDispatcher --> Colonist（assigns） | [`class-colonist-control`](class-colonist-control.md)、[`seq-command`](seq-command.md) |
-| `IF-04` | use case「查看殖民者個體資訊」；Colonist 的屬性 | [`usecase`](usecase.md)、[`class-colonist-control`](class-colonist-control.md) |
+| `IF-04` | Colonist 的屬性（hp、satiety、stress、三項專長、tolerance、isCollapsed、isAlive）提供給介面；use case「查看殖民者個體資訊」 | [`class-colonist-control`](class-colonist-control.md)、[`usecase`](usecase.md) |
 
 ## 不在 UML 範圍的需求
 
 | 需求 | 原因 |
 | --- | --- |
 | `NFR-01`～`NFR-06`、`NFR-10` | 效能、可用性、可攜性與試玩驗證，屬於實作與測試階段，類別圖和循序圖無法表達 |
-| `FR-CORE-15` | 「從結算畫面開新局」是介面操作，類別圖只表示 `GameClock` 可以重新開始；實際流程在實作時處理 |
 
 ## 檢查結果
 
