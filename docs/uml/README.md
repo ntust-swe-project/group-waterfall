@@ -6,13 +6,13 @@ Waterfall 的**設計階段**產出。依據 SRS v1.0（tag `srs-v1.0`，閘門 
 
 | 圖 | 檔案 | 負責 | 狀態 |
 | --- | --- | --- | --- |
-| use case 圖 | [`usecase.md`](usecase.md) | 張晏碩 | ☐ |
-| 太空站與危機類別圖 | [`class-station-crisis.md`](class-station-crisis.md) | 施家瑋 | ☐ |
-| 殖民者與控制類別圖 | [`class-colonist-control.md`](class-colonist-control.md) | 張晏碩 | ☐ |
-| 殖民者狀態圖 | [`state-colonist.md`](state-colonist.md) | 張晏碩 | ☐ |
-| 危機觸發循序圖 | [`seq-crisis.md`](seq-crisis.md) | 施家瑋 | ☐ |
-| 指令循序圖 | [`seq-command.md`](seq-command.md) | 張晏碩 | ☐ |
-| 追溯表（需求 ↔ UML） | [`traceability.md`](traceability.md) | 施家瑋（B 的需求列由張晏碩檢查） | ☐ |
+| use case 圖 | [`usecase.md`](usecase.md) | 張晏碩 | ☑ |
+| 太空站與危機類別圖 | [`class-station-crisis.md`](class-station-crisis.md) | 施家瑋 | ☑ |
+| 殖民者與控制類別圖 | [`class-colonist-control.md`](class-colonist-control.md) | 張晏碩 | ☑ |
+| 殖民者狀態圖 | [`state-colonist.md`](state-colonist.md) | 張晏碩 | ☑ |
+| 危機觸發循序圖 | [`seq-crisis.md`](seq-crisis.md) | 施家瑋 | ☑ |
+| 指令循序圖 | [`seq-command.md`](seq-command.md) | 張晏碩 | ☑ |
+| 追溯表（需求 ↔ UML） | [`traceability.md`](traceability.md) | 施家瑋（B 的需求列由張晏碩檢查） | ☑ |
 
 ## 寫法約定
 

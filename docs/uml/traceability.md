@@ -1,6 +1,6 @@
 # 追溯表（需求 ↔ UML）
 
-- **負責人**：施家瑋（A）；張晏碩負責的需求（`FR-COL`、`FR-CTL`、`UI`、`IF-01`、`02`、`04`）由張晏碩填寫、檢查
+- **負責人**：施家瑋（A）；張晏碩負責的需求（`FR-COL`、`FR-CTL`、`UI`、`IF-01`、`02`、`04`）由施家瑋依張晏碩各圖開頭的「對應需求」整理，**待張晏碩在 PR #7 檢查**
 - **依據**：SRS v1.0（tag `srs-v1.0`）
 - 用途：確認每條需求都有對應的設計，也確認設計裡沒有 SRS 沒要求的東西。
 
@@ -61,7 +61,7 @@
 | `FR-CRI-12` | evaluateDevelopment()：限制在 0.7～1.3 | [`seq-crisis`](seq-crisis.md) |
 | `FR-CRI-13` | evaluateDevelopment()：每天最多變 0.1 | [`seq-crisis`](seq-crisis.md) |
 | `FR-CRI-14` | writeDebugLog() 只寫檔；UI-11 不含係數 | [`class-station-crisis`](class-station-crisis.md)、[`seq-crisis`](seq-crisis.md) |
-| `IF-03` | Station ..> TaskDispatcher、TaskDispatcher ..> SupplyStock | [`class-station-crisis`](class-station-crisis.md)、[`seq-crisis`](seq-crisis.md) |
+| `IF-03` | Station ..> TaskDispatcher、TaskDispatcher ..> Station（物資預留） | [`class-station-crisis`](class-station-crisis.md)、[`seq-crisis`](seq-crisis.md) |
 | `IF-05` | Station → 使用者介面 | [`class-station-crisis`](class-station-crisis.md) |
 | `IF-06` | GameClock、Settlement → 使用者介面 | [`class-station-crisis`](class-station-crisis.md) |
 | `IF-07` | ColonistDeterioration ..> Colonist | [`class-station-crisis`](class-station-crisis.md)、[`seq-crisis`](seq-crisis.md) |
@@ -72,12 +72,21 @@
 
 ## B 負責的需求
 
+依張晏碩各圖開頭的「對應需求」整理，**待張晏碩檢查**。
+
 | 需求 | 對應的 UML 元素 | 圖 |
 | --- | --- | --- |
-| `FR-COL-01`～`FR-COL-28` | 【待張晏碩填】Colonist 的屬性與狀態 | `class-colonist-control.md`、`state-colonist.md` |
-| `FR-CTL-01`～`FR-CTL-14` | 【待張晏碩填】TaskDispatcher、Task | `class-colonist-control.md`、`seq-command.md` |
-| `UI-01`～`UI-11` | 【待張晏碩填】 | `usecase.md` |
-| `IF-01`、`IF-02`、`IF-04` | 【待張晏碩填】 | `class-colonist-control.md` |
+| `FR-COL-01`～`03`、`FR-COL-15`～`17` | Colonist 的屬性（hp、satiety、stress、三項專長、tolerance、isAlive） | [`class-colonist-control`](class-colonist-control.md) |
+| `FR-COL-04`～`09`、`FR-COL-11`～`12`、`FR-COL-21` | Colonist.updateVitals()、calculateEfficiency() | [`class-colonist-control`](class-colonist-control.md)、[`state-colonist`](state-colonist.md) |
+| `FR-COL-10`、`FR-COL-13`～`14`、`FR-COL-26`～`28` | TaskDispatcher.checkSelfCare()、settleReservation()；Task（EAT、REST）、Task.reservedSupply；Eating、Resting 狀態 | [`class-colonist-control`](class-colonist-control.md)、[`seq-command`](seq-command.md)、[`state-colonist`](state-colonist.md) |
+| `FR-COL-18`～`20` | Colonist.receiveCrisis()、currentCrisisImpact、endCrisisEffect() | [`class-colonist-control`](class-colonist-control.md)、[`state-colonist`](state-colonist.md) |
+| `FR-COL-22`～`25` | Colonist.isCollapsed、isAlive；CollapsedResting、RecoveryResting、Dead 狀態 | [`class-colonist-control`](class-colonist-control.md)、[`state-colonist`](state-colonist.md) |
+| `FR-CTL-01`～`04`、`FR-CTL-14` | TaskDispatcher.submitPlayerTask()、instructionDelaySeconds；TaskStatus.PENDING_DELAY；循序圖的 par 區塊（延遲與移動期間仍可操作） | [`class-colonist-control`](class-colonist-control.md)、[`seq-command`](seq-command.md) |
+| `FR-CTL-05`～`07`、`FR-CTL-13` | TaskDispatcher.interruptAndSaveProgress()、resumeTask()；Task.progress、creationOrder | [`class-colonist-control`](class-colonist-control.md)、[`seq-command`](seq-command.md)、[`state-colonist`](state-colonist.md) |
+| `FR-CTL-08`～`12` | TaskDispatcher.dispatch()、cancelTask()；TaskKind；Task → Facility；Task.markWaiting() | [`class-colonist-control`](class-colonist-control.md)、[`seq-command`](seq-command.md)、[`usecase`](usecase.md) |
+| `UI-01`～`11` | use case 圖的「資訊查看與狀態提醒」「工作與設施管理」「遊戲流程」三組使用案例；`UI-06`、`UI-10` 另見指令循序圖 | [`usecase`](usecase.md)、[`seq-command`](seq-command.md) |
+| `IF-01`、`IF-02` | TaskDispatcher --> Colonist（assigns） | [`class-colonist-control`](class-colonist-control.md)、[`seq-command`](seq-command.md) |
+| `IF-04` | use case「查看殖民者個體資訊」；Colonist 的屬性 | [`usecase`](usecase.md)、[`class-colonist-control`](class-colonist-control.md) |
 
 ## 不在 UML 範圍的需求
 
@@ -89,4 +98,5 @@
 ## 檢查結果
 
 - A 負責的 `FR-CORE`、`FR-STN`、`FR-CRI` 共 53 條需求，都至少對應到一個 UML 元素。
+- B 負責的 `FR-COL` 28 條、`FR-CTL` 14 條、`UI` 11 條，依上表都對應到 B 的圖（待張晏碩確認）。
 - A 的兩張圖沒有出現 SRS 沒要求的功能；圖上的設計決定（例如設施分類用繼承、換日時先算連鎖損壞）都寫在各圖的「設計說明」。

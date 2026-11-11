@@ -39,8 +39,8 @@ sequenceDiagram
                     W->>ST: 隨機選 1 個運作中的設施
                     ST->>F: takeDamage(嚴重度)
                 else 殖民者狀態惡化（IF-07）
-                    W->>C: applyCrisis(等級 L, 30 秒)
-                    Note right of C: D = max(0, L − 耐受性)<br/>效果依 FR-COL-19、20
+                    W->>C: receiveCrisis(等級 L, 30 秒)
+                    Note right of C: D = max(0, L − 耐受性)<br/>效果依 FR-COL-19、20<br/>前一次未結束時覆蓋，不疊加
                 end
                 opt 有設施受損
                     ST->>ST: onFacilityDamaged()、computeIntegrity()

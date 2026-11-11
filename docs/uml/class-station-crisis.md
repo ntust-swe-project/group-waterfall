@@ -141,7 +141,7 @@ classDiagram
     Facility <|-- FunctionFacility
     ManualFacility "0..1" --> "0..1" Colonist : 操作者
     Station ..> TaskDispatcher : 建造、維修工作（IF-03）
-    TaskDispatcher ..> SupplyStock : 預留、釋放、扣除（IF-03）
+    TaskDispatcher ..> Station : 預留、釋放、扣除物資（IF-03）
     TaskDispatcher ..> Task
 
     CrisisManager "1" *-- "*" Wave
@@ -163,7 +163,8 @@ classDiagram
 
 - **設施的分類用繼承表示**：`ManualFacility`、`AutoFacility`、`FunctionFacility` 對應 D-STN-1 的人工生產、自動化生產、功能設施。只有 `ManualFacility` 有 `operator` 和 `isAssignable()`，對應 `IF-03` 的「可指派狀態只有人工生產設施有」。人工農田和自動化農田是同一種產出、不同類別的兩個 `FacilitySpec`。
 - **設施規格與設施分開**：`FacilitySpec` 記名稱、類別、建造成本、每天產出，對應 `NFR-07` 數值要集中在設定檔、不改程式碼就能調整。
-- **物資庫存只有一份**：`SupplyStock` 屬於 `Station`，建造和進食都透過 `TaskDispatcher` 呼叫 `reserve()`、`release()`、`consume()`（`FR-STN-22`、`FR-STN-24`、`FR-COL-26`、`FR-COL-27`）。`available()` 回傳 `total - reserved`。
+- **物資庫存只有一份**：`SupplyStock` 屬於 `Station`。建造和進食的預留、釋放、扣除，都由 `TaskDispatcher` 透過 `IF-03` 向 `Station` 提出，再由 `Station` 轉給 `SupplyStock` 的 `reserve()`、`release()`、`consume()`；`Station` 是物資的唯一管理邊界，和張晏碩的 `seq-command.md` 一致（`FR-STN-22`、`FR-STN-24`、`FR-COL-26`、`FR-COL-27`）。`available()` 回傳 `total - reserved`。
+- **同一名殖民者的危機效果不疊加**（SRS 沒有規定，PR #7 決定）：殖民者在前一次「殖民者狀態惡化」的 30 秒還沒結束時又被選中，以新事件**覆蓋**舊事件：等級取兩次中較高者，持續時間從新事件開始重新計時 30 秒。理由是疊加會讓 D 在短時間內翻倍，可能一次致命，違背客戶「不會因為單一事件而直接失敗」（訪談 #1 A-Q7）。`Colonist.receiveCrisis()` 依此處理。
 - **完整度的公式**（`Station.computeIntegrity()`，`FR-STN-12`、`13` 規定在設計階段決定）：
 
   > 完整度 = max(0, 100 − 0.2 × 所有設施損壞程度的總和)
