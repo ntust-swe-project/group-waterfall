@@ -17,6 +17,7 @@ classDiagram
         +tick(delta)
         +checkFailure()
         +endGame(state, reason)
+        +startNewGame()
     }
     class GameState {
         <<enumeration>>

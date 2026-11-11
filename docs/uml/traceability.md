@@ -22,7 +22,7 @@
 | `FR-CORE-12` | Settlement.dayReached、GameClock.failReason | [`class-station-crisis`](class-station-crisis.md) |
 | `FR-CORE-13` | Settlement 的 4 項指標 | [`class-station-crisis`](class-station-crisis.md) |
 | `FR-CORE-14` | Settlement.computeScore()、daysSurvived | [`class-station-crisis`](class-station-crisis.md) |
-| `FR-CORE-15` | use case「從結算畫面開始新局」（`UC_RESTART`）；GameClock 重新開始 | [`usecase`](usecase.md)、[`class-station-crisis`](class-station-crisis.md) |
+| `FR-CORE-15` | use case「從結算畫面開始新局」（`UC_RESTART`）；GameClock.startNewGame()：從第 1 天、開局狀態（`FR-STN-21`）重新開始 | [`usecase`](usecase.md)、[`class-station-crisis`](class-station-crisis.md) |
 | `FR-STN-01` | Station（單一地圖）、Facility.position | [`class-station-crisis`](class-station-crisis.md) |
 | `FR-STN-02` | Station.requestBuild() → TaskDispatcher（IF-03） | [`class-station-crisis`](class-station-crisis.md) |
 | `FR-STN-03` | FacilitySpec.buildCost、SupplyStock.available() | [`class-station-crisis`](class-station-crisis.md) |
@@ -66,7 +66,7 @@
 | `IF-06` | GameClock、Settlement → 使用者介面 | [`class-station-crisis`](class-station-crisis.md) |
 | `IF-07` | ColonistDeterioration ..> Colonist | [`class-station-crisis`](class-station-crisis.md)、[`seq-crisis`](seq-crisis.md) |
 | `IF-08` | GameClock、CrisisManager 讀取 Station、Colonist | [`class-station-crisis`](class-station-crisis.md)、[`seq-crisis`](seq-crisis.md) |
-| `NFR-07` | FacilitySpec（數值集中在設定） | [`class-station-crisis`](class-station-crisis.md) |
+| `NFR-07` | 設定檔中的初值：FacilitySpec（建造成本、產出）、CrisisManager 的強度倍率與係數上下限、完整度公式係數 0.2、開局物資；TaskDispatcher.instructionDelaySeconds 與 Colonist 數值初值（見張晏碩類別圖設計說明第 2 點） | [`class-station-crisis`](class-station-crisis.md)、[`class-colonist-control`](class-colonist-control.md) |
 | `NFR-08` | CrisisManager.seed | [`class-station-crisis`](class-station-crisis.md)、[`seq-crisis`](seq-crisis.md) |
 | `NFR-09` | CrisisManager.writeDebugLog() | [`class-station-crisis`](class-station-crisis.md)、[`seq-crisis`](seq-crisis.md) |
 
