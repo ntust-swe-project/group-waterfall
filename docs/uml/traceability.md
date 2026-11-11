@@ -35,7 +35,7 @@
 | `FR-STN-10` | FacilitySpec.buildCost、outputPerDay | [`class-station-crisis`](class-station-crisis.md) |
 | `FR-STN-11` | FacilitySpec.buildCost | [`class-station-crisis`](class-station-crisis.md) |
 | `FR-STN-12` | Station.integrity | [`class-station-crisis`](class-station-crisis.md) |
-| `FR-STN-13` | Station.computeIntegrity() | [`class-station-crisis`](class-station-crisis.md)、[`seq-crisis`](seq-crisis.md) |
+| `FR-STN-13` | Station.computeIntegrity()（公式見類別圖設計說明） | [`class-station-crisis`](class-station-crisis.md)、[`seq-crisis`](seq-crisis.md) |
 | `FR-STN-14` | Station.getDamagedFacilities() → 使用者介面（IF-05） | [`class-station-crisis`](class-station-crisis.md) |
 | `FR-STN-15` | Facility.isOperating()（damage < 100） | [`class-station-crisis`](class-station-crisis.md) |
 | `FR-STN-16` | Station.onFacilityDamaged() → TaskDispatcher；Facility.repair() | [`class-station-crisis`](class-station-crisis.md)、[`seq-crisis`](seq-crisis.md) |
